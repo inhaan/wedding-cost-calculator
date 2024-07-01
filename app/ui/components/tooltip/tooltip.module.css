@@ -1,0 +1,43 @@
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-target {
+    cursor: pointer;
+}
+
+.tooltip-content {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #555;
+    text-align: left;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out; /* Add transition for smooth effect */
+    visibility: hidden;
+    font-size: 0.875rem;
+}
+
+.tooltip-content::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* Position the arrow at the bottom of the tooltip */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent; /* Arrow color same as tooltip background */
+}
+
+.tooltip-container:hover .tooltip-content,
+.tooltip-container:focus .tooltip-content {
+    opacity: 1;
+    visibility: visible;
+    bottom: calc(100% + 5px); /* Animate the tooltip position */
+}
